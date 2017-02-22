@@ -29,6 +29,10 @@
             <CreateDate>2016-11-30</CreateDate>
             <!--<SQL>install.sql</SQL>-->
         </Version>
+        <Version nr="105">
+            <CreateDate>2017-02-20</CreateDate>
+            <!--<SQL>install.sql</SQL>-->
+        </Version>
         <Adminmenu>
             <Settingslink sort="1">
                 <Name>Einstellungen</Name>
