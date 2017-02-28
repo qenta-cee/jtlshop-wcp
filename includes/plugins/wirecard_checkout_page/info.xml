@@ -9,30 +9,6 @@
     <Shop4Version>400</Shop4Version>
     <PluginID>wirecard_checkout_page</PluginID>
     <Install>
-        <Version nr="100">
-            <CreateDate>2013-07-15</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
-        </Version>
-        <Version nr="101">
-            <CreateDate>2014-01-20</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
-        </Version>
-        <Version nr="102">
-            <CreateDate>2015-09-14</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
-        </Version>
-        <Version nr="103">
-            <CreateDate>2015-12-04</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
-        </Version>
-        <Version nr="104">
-            <CreateDate>2016-11-30</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
-        </Version>
-        <Version nr="105">
-            <CreateDate>2017-02-20</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
-        </Version>
         <Version nr="106">
             <CreateDate>2017-02-28</CreateDate>
             <!--<SQL>install.sql</SQL>-->
