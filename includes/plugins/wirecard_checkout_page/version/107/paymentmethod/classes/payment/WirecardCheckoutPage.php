@@ -128,6 +128,7 @@ class WirecardCheckoutPage extends PaymentMethod
                 ->setWindowName(WIRECARD_CHECKOUT_PAGE_WINDOWNAME);
 
             $client->xIframeUsed = $this->getConfig('use_iframe');
+            $client->xLanguage = convertISO2ISO639($_SESSION['cISOSprache']);
 
             $response = $client->initiate();
 

@@ -22,7 +22,7 @@ if ($_REQUEST['xIframeUsed'] && ! array_key_exists('redirected', $_REQUEST)
     $tmpl = dirname(__FILE__) . '/../paymentmethod/template/iframebreakout.tpl';
     $smarty->assign('url', gibShopURL() . '/includes/modules/notify.php?' . $key . '=' . $hash);
     $smarty->assign('args', $_REQUEST);
-    if ($_REQUEST['language'] == 'de') {
+    if ($_REQUEST['xLanguage'] == 'de') {
         $smarty->assign('txt_redirect', 'Sie werden in K&uuml;rze weitergeleitet.');
         $smarty->assign(
             'txt_redirect_click',
