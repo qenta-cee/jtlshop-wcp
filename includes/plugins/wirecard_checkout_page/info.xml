@@ -9,7 +9,11 @@
     <Shop4Version>400</Shop4Version>
     <PluginID>wirecard_checkout_page</PluginID>
     <Install>
-        <Version nr="106">
+        <Version nr="100">
+            <CreateDate>2017-02-28</CreateDate>
+            <!--<SQL>install.sql</SQL>-->
+        </Version>
+        <Version nr="107">
             <CreateDate>2017-02-28</CreateDate>
             <!--<SQL>install.sql</SQL>-->
         </Version>
@@ -113,10 +117,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Select</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Select</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -135,10 +141,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Kreditkarte</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Credit Card</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -157,10 +165,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Kreditkarte mobile-, tele-order</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Credit Card mobile-, tele-order</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -179,10 +189,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Rechnung</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Invoice</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -201,10 +213,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Ratenzahlung</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Installment</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -223,10 +237,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Maestro SecureCode</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Maestro SecureCode</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -245,10 +261,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page eps Online-Überweisung</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page eps Online Bank Transfer</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -267,10 +285,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page iDEAL</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page iDEAL</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -289,10 +309,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page giropay</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page giropay</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -311,10 +333,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page SOFORT Überweisung (PIN/TAN)</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page SOFORT Banking (PIN/TAN)</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -333,10 +357,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Skrill Direct</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Skrill Direct</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -355,10 +381,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Skrill Digital Wallet</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Skrill Digital Wallet</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -377,10 +405,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page mpass</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page mpass</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -399,10 +429,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -421,10 +453,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Przelewy24</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Przelewy24</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -443,10 +477,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page moneta.ru</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page moneta.ru</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -465,10 +501,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page POLi</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page POLi</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -487,10 +525,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page eKonto</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page eKonto</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -509,10 +549,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page InstantBank</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page InstantBank</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -531,10 +573,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Handyabrechnung</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Mobile Phone Invoicing</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -553,10 +597,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page paysafecard</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page paysafecard</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -575,10 +621,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Quick</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Quick</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -597,10 +645,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page PayPal</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page PayPal</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -619,10 +669,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page Lastschriftverfahren</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Direct Debit</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
@@ -641,10 +693,12 @@
                 <MethodLanguage iso="GER">
                     <Name>Wirecard Checkout Page CLICK2PAY</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page CLICK2PAY</Name>
                     <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
 
@@ -661,7 +715,8 @@
             <Variable>
                 <Name>Validation_Error_Invalid_Response</Name>
                 <Description>Validation error: invalid response</Description>
-                <VariableLocalized iso="GER">Fehler beim Überprüfen des Zahlungsvorgangs: ungültige Antwort.</VariableLocalized>
+                <VariableLocalized iso="GER">Fehler beim Überprüfen des Zahlungsvorgangs: ungültige Antwort.
+                </VariableLocalized>
                 <VariableLocalized iso="ENG">Validation error: invalid response.</VariableLocalized>
             </Variable>
             <Variable>
