@@ -366,30 +366,6 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page Skrill Direct</Name>
-                <Sort>110</Sort>
-                <SendMail>0</SendMail>
-                <Provider>Wirecard</Provider>
-                <TSCode>OTHER</TSCode>
-                <PreOrder>1</PreOrder>
-                <Soap>0</Soap>
-                <Curl>0</Curl>
-                <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageSkrillDirect.php</ClassFile>
-                <ClassName>WirecardCheckoutPageSkrillDirect</ClassName>
-                <TemplateFile>template/payment.tpl</TemplateFile>
-                <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Skrill Direct</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-                <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Skrill Direct</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-            </Method>
-            <Method>
                 <Name>Wirecard Checkout Page Skrill Digital Wallet</Name>
                 <Sort>120</Sort>
                 <SendMail>0</SendMail>
@@ -409,30 +385,6 @@
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page Skrill Digital Wallet</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-            </Method>
-            <Method>
-                <Name>Wirecard Checkout Page mpass</Name>
-                <Sort>130</Sort>
-                <SendMail>0</SendMail>
-                <Provider>Wirecard</Provider>
-                <TSCode>OTHER</TSCode>
-                <PreOrder>1</PreOrder>
-                <Soap>0</Soap>
-                <Curl>0</Curl>
-                <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageMpass.php</ClassFile>
-                <ClassName>WirecardCheckoutPageMpass</ClassName>
-                <TemplateFile>template/payment.tpl</TemplateFile>
-                <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page mpass</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-                <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page mpass</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
@@ -558,30 +510,6 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page InstantBank</Name>
-                <Sort>190</Sort>
-                <SendMail>0</SendMail>
-                <Provider>Wirecard</Provider>
-                <TSCode>OTHER</TSCode>
-                <PreOrder>0</PreOrder>
-                <Soap>0</Soap>
-                <Curl>0</Curl>
-                <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageInstantBank.php</ClassFile>
-                <ClassName>WirecardCheckoutPageInstantBank</ClassName>
-                <TemplateFile>template/payment.tpl</TemplateFile>
-                <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page InstantBank</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-                <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page InstantBank</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-            </Method>
-            <Method>
                 <Name>Wirecard Checkout Page Mobile Phone Invoicing</Name>
                 <Sort>200</Sort>
                 <SendMail>0</SendMail>
@@ -677,55 +605,6 @@
                     <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
-            <Method>
-                <Name>Wirecard Checkout Page Direct Debit</Name>
-                <Sort>240</Sort>
-                <SendMail>0</SendMail>
-                <Provider>Wirecard</Provider>
-                <TSCode>OTHER</TSCode>
-                <PreOrder>1</PreOrder>
-                <Soap>0</Soap>
-                <Curl>0</Curl>
-                <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageElv.php</ClassFile>
-                <ClassName>WirecardCheckoutPageElv</ClassName>
-                <TemplateFile>template/payment.tpl</TemplateFile>
-                <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Lastschriftverfahren</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-                <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Direct Debit</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-            </Method>
-            <Method>
-                <Name>Wirecard Checkout Page CLICK2PAY</Name>
-                <Sort>240</Sort>
-                <SendMail>0</SendMail>
-                <Provider>Wirecard</Provider>
-                <TSCode>OTHER</TSCode>
-                <PreOrder>1</PreOrder>
-                <Soap>0</Soap>
-                <Curl>0</Curl>
-                <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageClick2pay.php</ClassFile>
-                <ClassName>WirecardCheckoutPageClick2pay</ClassName>
-                <TemplateFile>template/payment.tpl</TemplateFile>
-                <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page CLICK2PAY</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-                <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page CLICK2PAY</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-            </Method>
-
         </PaymentMethod>
 
         <Locales>
