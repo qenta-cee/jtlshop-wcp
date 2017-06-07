@@ -21,6 +21,18 @@
             <Settingslink sort="1">
                 <Name>Einstellungen</Name>
 
+                <Setting type="selectbox" initialValue="production" sort="5" conf="Y">
+                    <Name>Konfiguration</Name>
+                    <Description>Zum Testen der Integration eine vordefinierte Konfiguration auswählen. Für Produktivsysteme "Production" auswählen.</Description>
+                    <ValueName>wirecard_checkout_page_configuration</ValueName>
+                    <SelectboxOptions>
+                        <Option value="production" sort="1">Produktion</Option>
+                        <Option value="demo" sort="2">Demo</Option>
+                        <Option value="test" sort="3">Test</Option>
+                        <Option value="test3d" sort="4">Test 3D</Option>
+                    </SelectboxOptions>
+                </Setting>
+
                 <Setting type="text" initialValue="D200001" sort="10" conf="Y">
                     <Name>Customer Id</Name>
                     <Description>Wirecard Kundennummer</Description>
@@ -49,7 +61,7 @@
                     <ValueName>wirecard_checkout_page_service_url</ValueName>
                 </Setting>
 
-                <Setting type="text" initialValue="" sort="60" conf="Y">
+                <Setting type="text" initialValue="-1" sort="60" conf="Y">
                     <Name>Max. Versuche</Name>
                     <Description>Anzahl der maximalen Zahlungsversuche</Description>
                     <ValueName>wirecard_checkout_page_max_retries</ValueName>

@@ -32,7 +32,8 @@ class WirecardCheckoutPage extends PaymentMethod
     /**
      * Initialize payment object
      *
-     * @param string $moduleID
+     * @param int $nAgainCheckout
+     * @return $this|void
      */
 
     function init($nAgainCheckout = 0)
@@ -356,6 +357,30 @@ class WirecardCheckoutPage extends PaymentMethod
     protected function getConfig($param)
     {
         global $oPlugin;
+
+        $config = array(
+            'demo' => array(
+                'customer_id' => 'D200001',
+                'shop_id' => '',
+                'secret' => 'B8AKTPWBRMNBV455FG6M2DANE99WU2'
+            ),
+            'test' => array(
+                'customer_id' => 'D200411',
+                'shop_id' => '',
+                'secret' => 'CHCSH7UGHVVX2P7EHDHSY4T2S4CGYK4QBE4M5YUUG2ND5BEZWNRZW5EJYVJQ'
+            ),
+            'test3d' => array(
+                'customer_id' => 'D200411',
+                'shop_id' => '3D',
+                'secret' => 'DP4TMTPQQWFJW34647RM798E9A5X7E8ATP462Z4VGZK53YEJ3JWXS98B9P4F'
+            )
+        );
+
+        if (in_array($param, array('customer_id', 'shop_id', 'secret'))) {
+            if( $this->getConfig('configuration') != 'production' ){
+                return $config[$this->getConfig('configuration')][$param];
+            }
+        }
 
 		$param = "wirecard_checkout_page_$param";
         // when doing handleNotifcation we have no $oPlugin available
