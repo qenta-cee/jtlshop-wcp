@@ -17,8 +17,7 @@
 
 ini_set('include_path', dirname(__FILE__) . '/../lib' . PATH_SEPARATOR .ini_get('include_path'));
 
-require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance()->registerNamespace("WirecardCEE");;
+require_once 'autoload.php';
 require_once(PFAD_ROOT . PFAD_INCLUDES_MODULES . 'PaymentMethod.class.php');
 
 define('WIRECARD_CHECKOUT_PAGE_INVOICE_INSTALLMENT_MIN_AGE', 18);
