@@ -150,6 +150,30 @@
                 </MethodLanguage>
             </Method>
             <Method>
+                <Name>Wirecard Checkout Page MasterPass</Name>
+                <Sort>20</Sort>
+                <SendMail>0</SendMail>
+                <Provider>Wirecard</Provider>
+                <TSCode>OTHER</TSCode>
+                <PreOrder>1</PreOrder>
+                <Soap>0</Soap>
+                <Curl>0</Curl>
+                <Sockets>0</Sockets>
+                <ClassFile>classes/payment/WirecardCheckoutPageMasterpass.php</ClassFile>
+                <ClassName>WirecardCheckoutPageMasterpass</ClassName>
+                <TemplateFile>template/payment.tpl</TemplateFile>
+                <MethodLanguage iso="GER">
+                    <Name>Wirecard Checkout Page MasterPass</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+                <MethodLanguage iso="ENG">
+                    <Name>Wirecard Checkout Page MasterPass</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+            </Method>
+            <Method>
                 <Name>Wirecard Checkout Page Credit Card MoTo</Name>
                 <Sort>30</Sort>
                 <SendMail>0</SendMail>
