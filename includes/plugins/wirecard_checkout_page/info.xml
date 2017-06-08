@@ -97,6 +97,16 @@
                     </SelectboxOptions>
                 </Setting>
 
+                <Setting type="selectbox" initialValue="0" sort="85" conf="Y">
+                    <Name>Warenkorbdaten des Konsumenten mitsenden</Name>
+                    <Description>Weiterleitung des Warenkorbs des Kunden an den Finanzdienstleister.</Description>
+                    <ValueName>wirecard_checkout_page_send_basket</ValueName>
+                    <SelectboxOptions>
+                        <Option value="1" sort="1">On</Option>
+                        <Option value="0" sort="2">Off</Option>
+                    </SelectboxOptions>
+                </Setting>
+
                 <Setting type="text" initialValue="" sort="90" conf="Y">
                     <Name>Text auf der Bezahlseite</Name>
                     <Description>Text, der dem Kunden zu den Bestelldaten angezeigt wird</Description>

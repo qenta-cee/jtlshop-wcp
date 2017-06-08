@@ -130,6 +130,13 @@ class WirecardCheckoutPage extends PaymentMethod
             if( $this->paymenttype == WirecardCEE_QMore_PaymentType::MASTERPASS )
                 $client->setShippingProfile('NO_SHIPPING');
 
+            if ($this->getConfig('send_basket')
+                || ( $this->getConfig('installment_provider') != 'payolution' && $this->paymenttype == WirecardCEE_QMore_PaymentType::INSTALLMENT)
+                || ( $this->getConfig('invoice_provider') != 'payolution' && $this->paymenttype == WirecardCEE_QMore_PaymentType::INVOICE)
+            ) {
+                $this->setBasket($client, $order);
+            }
+
             $client->xIframeUsed = $this->getConfig('use_iframe');
             $client->xLanguage = convertISO2ISO639($_SESSION['cISOSprache']);
 
@@ -482,6 +489,66 @@ class WirecardCheckoutPage extends PaymentMethod
         $consumerData->addAddressInformation($billingAddress)
             ->addAddressInformation($shippingAddress);
 
+    }
+
+    /**
+     * set basket information
+     *
+     * @param WirecardCEE_QPay_FrontendClient $client
+     * @param Bestellung $order
+     */
+    protected function setBasket(WirecardCEE_QPay_FrontendClient &$client, Bestellung $order){
+        $basket = new WirecardCEE_Stdlib_Basket();
+
+        $currency = $order->Waehrung->cName;
+
+        foreach($order->Positionen as $product){
+
+            // set shipping
+            if($product->cName == $order->cVersandartName){
+                $basket_item = new WirecardCEE_Stdlib_Basket_Item('shipping');
+
+                $basket_item->setName($order->cVersandartName);
+                $basket_item->setDescription('Shipping');
+
+                $gross_amount = number_format(floatval(str_replace(",",".",$product->cEinzelpreisLocalized[0][$currency])),2);
+                $net_amount = number_format(floatval(str_replace(",",".",$product->cEinzelpreisLocalized[1][$currency])),2);
+
+                $basket_item->setUnitGrossAmount($gross_amount);
+                $basket_item->setUnitNetAmount($net_amount);
+                $basket_item->setUnitTaxRate(number_format($product->fMwSt, 2));
+                $basket_item->setUnitTaxAmount(number_format($gross_amount-$net_amount, 2));
+
+                $basket->addItem($basket_item,1);
+                continue;
+            }
+            $basket_item = new WirecardCEE_Stdlib_Basket_Item($product->kArtikel);
+
+            // set name and description
+            $basket_item->setName(substr($product->cName, 0, 127));
+            if(strlen(@$product->Artikel->cKurzBeschreibung) > 1)
+                $basket_item->setDescription(substr(@$product->Artikel->cKurzBeschreibung, 0, 127));
+            else
+                $basket_item->setDescription(substr($product->cName, 0, 127));
+
+            // set prices
+            $prices = @$product->Artikel->Preise;
+            $basket_item->setUnitGrossAmount(number_format(@$prices->fVKBrutto,
+                2));
+            $basket_item->setUnitNetAmount(number_format(@$prices->fVKNetto, 2));
+            $basket_item->setUnitTaxRate(number_format($product->fMwSt, 2));
+            $basket_item->setUnitTaxAmount(number_format(@$prices->fVKBrutto - @$prices->fVKNetto,
+                2));
+
+            // set picture
+            if ( count(@$product->Artikel->Bilder) > 0){
+                $basket_item->setImageUrl( Shop()->getURL(true) . '/' . $product->Artikel->Bilder[0]->cPfadMini);
+            }
+
+            $basket->addItem($basket_item, $product->nAnzahl);
+        }
+
+        $client->setBasket($basket);
     }
 
     /**
