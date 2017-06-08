@@ -209,12 +209,12 @@
                 <ClassName>WirecardCheckoutPageCcardMoto</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Kreditkarte mobile-, tele-order</Name>
+                    <Name>Wirecard Checkout Page Kreditkarte - Post / Telefonbestellung</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Credit Card mobile-, tele-order</Name>
+                    <Name>Wirecard Checkout Page Credit Card - Mail Order / Telephone Order</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
