@@ -402,7 +402,7 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
+                <Name>Wirecard Checkout Page Bancontact</Name>
                 <Sort>140</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -415,12 +415,12 @@
                 <ClassName>WirecardCheckoutPageBmc</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
+                    <Name>Wirecard Checkout Page Bancontact</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
+                    <Name>Wirecard Checkout Page Bancontact</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
