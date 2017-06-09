@@ -117,6 +117,7 @@
             </Settingslink>
         </Adminmenu>
         <Hooks>
+            <Hook id="140">140_HOOK_SMARTY_OUTPUTFILTER.php</Hook>
             <Hook id="19">payment_selection.php</Hook>
             <Hook id="144">iframebreakout.php</Hook>
         </Hooks>
