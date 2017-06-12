@@ -19,3 +19,15 @@ if (isset($_SESSION['wirecard_checkout_page_message'])) {
     $smarty->assign('hinweis', $_SESSION['wirecard_checkout_page_message']);
     unset($_SESSION['wirecard_checkout_page_message']);
 }
+
+$kPlugin = $oPlugin->kPlugin;
+
+if(isset($_POST['Zahlungsart'])){
+    $payment_method = new Zahlungsart($_POST['Zahlungsart']);
+    $payment_method_name = "kPlugin_{$kPlugin}_wirecardcheckoutpage";
+    $payment_method_name = str_replace($payment_method_name,'',$payment_method->cModulId);
+
+    if(isset($_POST["wcp_{$payment_method_name}_financial_institution"])){
+        $_SESSION['financialInstitution'] = $_POST["wcp_{$payment_method_name}_financial_institution"];
+    }
+}

@@ -716,6 +716,12 @@
                 <VariableLocalized iso="GER">Bitte akzeptieren Sie die payolution Konditionen.</VariableLocalized>
                 <VariableLocalized iso="ENG">Please accept the payolution terms.</VariableLocalized>
             </Variable>
+            <Variable>
+                <Name>Wcp_eps_ideal_bank_institution</Name>
+                <Description>Label for eps and ideal bank list dropdown</Description>
+                <VariableLocalized iso="GER">Finanzinstitut</VariableLocalized>
+                <VariableLocalized iso="ENG">Financial institution</VariableLocalized>
+            </Variable>
         </Locales>
     </Install>
 </jtlshop3plugin>

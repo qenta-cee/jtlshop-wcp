@@ -54,6 +54,9 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
     $customer = new Kunde($smarty->tpl_vars["Kunde"]->value->kKunde);
     $kPlugin = $oPlugin->kPlugin;
 
+    /**
+     * phpquery selectors for our payment methods
+     */
     $selectors = array(
         'invoice' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageinvoice",
         'installment' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageinstallment",
@@ -61,7 +64,6 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
         'ideal' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageideal"
     );
 
-    $consent_message = $translate("Wcp_payolution_terms");
     $payolution_mid = $get_config('wirecard_checkout_page_payolution_mid');
 
     /** generate consent message replacing the _word_ with a link or word */
@@ -74,7 +76,7 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
             }
             return $match;
         },
-        $consent_message);
+        $translate("Wcp_payolution_terms"));
 
     $smarty_data = array(
         'plugin_id' => $kPlugin,
@@ -88,7 +90,10 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
         'tmpl_path' => $tmpl_path,
         'txt_wcp_birthdate_invalid' => $translate("Wcp_birthdate_under_18"),
         'txt_wcp_payolution_terms' => $consent_message,
-        'txt_wcp_payolution_error' => $translate("Wcp_payolution_terms_not_checked")
+        'txt_wcp_payolution_error' => $translate("Wcp_payolution_terms_not_checked"),
+        'txt_wcp_eps_ideal_bank_institution' => $translate('Wcp_eps_ideal_bank_institution'),
+        'wcp_eps_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QMore_PaymentType::EPS),
+        'wcp_ideal_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QMore_PaymentType::IDL)
     );
 
     if (!strlen($customer->dGeburtstag) || $customer->dGeburtstag == '00.00.0000') {
@@ -119,11 +124,11 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
     foreach ($selectors as $payment => $selector) {
         $template_path = $tmpl_path . $payment . ".tpl";
         if (pq($selector . " label")->length && file_exists($template_path)) {
-            $smarty->assign(array(
-                    'method' => $payment,
-                    'wcp_display_payolution_terms' => $get_config('wirecard_checkout_page_' . $payment . '_provider') == 'payolution' && $get_config('wirecard_checkout_page_payolution_terms') == 1
-                )
-            );
+            $smarty->assign('method', $payment);
+            if( in_array($payment, array('invoice','installment'))) {
+                $smarty->assign('wcp_display_payolution_terms',
+                    $get_config('wirecard_checkout_page_' . $payment . '_provider') == 'payolution' && $get_config('wirecard_checkout_page_payolution_terms') == 1);
+            }
             pq($selector . " label")->append($smarty->fetch($template_path));
         }
     }

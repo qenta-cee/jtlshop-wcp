@@ -127,6 +127,11 @@ class WirecardCheckoutPage extends PaymentMethod
                 ->createConsumerMerchantCrmId($_SESSION['Kunde']->cMail)
                 ->setWindowName(WIRECARD_CHECKOUT_PAGE_WINDOWNAME);
 
+            if( isset($_SESSION['financialInstitution'])){
+                $client->setFinancialInstitution($_SESSION['financialInstitution']);
+                unset($_SESSION['financialInstitution']);
+            }
+
             if( $this->paymenttype == WirecardCEE_QMore_PaymentType::MASTERPASS )
                 $client->setShippingProfile('NO_SHIPPING');
 
