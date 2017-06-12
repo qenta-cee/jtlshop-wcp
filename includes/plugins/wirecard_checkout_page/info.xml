@@ -113,6 +113,47 @@
                     <ValueName>wirecard_checkout_page_display_text</ValueName>
                 </Setting>
 
+                <Setting type="text" initialValue="Y" sort="99" conf="N">
+                    <Name>Kauf auf Rechnung / Raten Einstellungen</Name>
+                    <Description />
+                    <ValueName>wirecard_checkout_page_installment_title</ValueName>
+                </Setting>
+
+                <Setting type="selectbox" initialValue="wirecard" sort="100" conf="Y">
+                    <Name>Provider für Rechnung</Name>
+                    <ValueName>wirecard_checkout_page_invoice_provider</ValueName>
+                    <SelectboxOptions>
+                        <Option value="wirecard" sort="1">Wirecard</Option>
+                        <Option value="ratepay" sort="2">RatePay</Option>
+                        <Option value="payolution" sort="3">payolution</Option>
+                    </SelectboxOptions>
+                </Setting>
+
+
+                <Setting type="selectbox" initialValue="ratepay" sort="110" conf="Y">
+                    <Name>Provider für Kauf auf Raten</Name>
+                    <ValueName>wirecard_checkout_page_installment_provider</ValueName>
+                    <SelectboxOptions>
+                        <Option value="ratepay" sort="1">RatePay</Option>
+                        <Option value="payolution" sort="2">payolution</Option>
+                    </SelectboxOptions>
+                </Setting>
+
+                <Setting type="selectbox" initialValue="0" sort="120" conf="Y">
+                    <Name>Payolution Nutzungsbedingungen</Name>
+                    <Description>Kunden müssen die Nutzungsbedingungen von payolution während des Bezahlprozesses akzeptieren.</Description>
+                    <ValueName>wirecard_checkout_page_payolution_terms</ValueName>
+                    <SelectboxOptions>
+                        <Option value="0" sort="1">Off</Option>
+                        <Option value="1" sort="2">On</Option>
+                    </SelectboxOptions>
+                </Setting>
+                <Setting type="text" initialValue="" sort="121" conf="Y">
+                    <Name>payolution mID</Name>
+                    <Description>payolution-Händler-ID, Nicht base64 kodiert.</Description>
+                    <ValueName>wirecard_checkout_page_payolution_mid</ValueName>
+                </Setting>
+
 
             </Settingslink>
         </Adminmenu>
@@ -657,8 +698,24 @@
                 <VariableLocalized iso="GER">falls nicht, klicken Sie bitte</VariableLocalized>
                 <VariableLocalized iso="ENG">If not, please click</VariableLocalized>
             </Variable>
-
-
+            <Variable>
+                <Name>Wcp_birthdate_under_18</Name>
+                <Description>Displayed when user birthdate is smaller than 18 years</Description>
+                <VariableLocalized iso="GER">Sie müssen mindestens 18 Jahre alt sein, um dieses Zahlungsmittel nutzen zu können.</VariableLocalized>
+                <VariableLocalized iso="ENG">You must be at least 18 years of age to use this payment method.</VariableLocalized>
+            </Variable>
+            <Variable>
+                <Name>Wcp_payolution_terms</Name>
+                <Description>Label for payolution terms checkbox</Description>
+                <VariableLocalized iso="GER">Mit der Übermittlung jener Daten an payolution, die für die Abwicklung von Zahlungen mit Kauf auf Rechnung und die Identitäts- und Bonitätsprüfung erforderlich sind, bin ich einverstanden. Meine _Einwilligung_ kann ich jederzeit mit Wirkung für die Zukunft widerrufen.</VariableLocalized>
+                <VariableLocalized iso="ENG">I agree that the data which are necessary for the liquidation of purchase on account and which are used to complete the identy and credit check are transmitted to payolution. My _consent_ can be revoked at any time with effect for the future.</VariableLocalized>
+            </Variable>
+            <Variable>
+                <Name>Wcp_payolution_terms_not_checked</Name>
+                <Description>Displayed when user didn't select the payolution terms</Description>
+                <VariableLocalized iso="GER">Bitte akzeptieren Sie die payolution Konditionen.</VariableLocalized>
+                <VariableLocalized iso="ENG">Please accept the payolution terms.</VariableLocalized>
+            </Variable>
         </Locales>
     </Install>
 </jtlshop3plugin>

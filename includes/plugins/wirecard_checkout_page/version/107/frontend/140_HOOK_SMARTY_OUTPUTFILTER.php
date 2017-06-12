@@ -33,34 +33,98 @@
  * terms of use. Please do not use the plugin if you do not agree to these
  * terms of use!
  */
-global $smarty;
+global $smarty, $customer;
 
-$tmpl_path = dirname(__FILE__) . '/../paymentmethod/template/';
 ini_set("display_errors", "on");
 error_reporting(E_ALL);
 
-$kPlugin = $oPlugin->kPlugin;
-
-$selectors = array(
-    'invoice' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageinvoice",
-    'installment' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageinstallment",
-    'eps' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageepsonlinebanktransfer",
-    'ideal' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageideal"
-);
-
-$smarty->assign(array(
-    'display_birthdate' => true,
-    'plugin_id' => $kPlugin,
-    'tmpl_path' => $tmpl_path
-));
 $step = Shop::Smarty()->getTemplateVars('step');
-
 if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
-    pq('head')->append($smarty->fetch($tmpl_path."payment_scripts.tpl"));
+    $tmpl_path = dirname(__FILE__) . '/../paymentmethod/template/';
+
+    $translate = function ($key) use ($oPlugin) {
+        return !array_key_exists($key,
+            $oPlugin->oPluginSprachvariableAssoc_arr) ? $key : $oPlugin->oPluginSprachvariableAssoc_arr[$key];
+    };
+
+    $get_config = function ($key) use ($oPlugin) {
+        return $oPlugin->oPluginEinstellungAssoc_arr[$key];
+    };
+
+    $customer = new Kunde($smarty->tpl_vars["Kunde"]->value->kKunde);
+    $kPlugin = $oPlugin->kPlugin;
+
+    $selectors = array(
+        'invoice' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageinvoice",
+        'installment' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageinstallment",
+        'eps' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageepsonlinebanktransfer",
+        'ideal' => "#kPlugin_{$kPlugin}_wirecardcheckoutpageideal"
+    );
+
+    $consent_message = $translate("Wcp_payolution_terms");
+    $payolution_mid = $get_config('wirecard_checkout_page_payolution_mid');
+
+    /** generate consent message replacing the _word_ with a link or word */
+    $consent_message = preg_replace_callback(
+        '/_\w+_/i',
+        function ($match) use ($payolution_mid) {
+            $match = str_replace("_", "", $match[0]);
+            if (strlen($payolution_mid)) {
+                return '<a href="https://payment.payolution.com/payolution-payment/infoport/dataprivacyconsent?mId=' . urlencode(base64_encode($payolution_mid)) . '" target="_blank">' . $match . '</a>';
+            }
+            return $match;
+        },
+        $consent_message);
+
+    $smarty_data = array(
+        'plugin_id' => $kPlugin,
+        'wcp_days' => range(1, 31, 1),
+        'wcp_months' => range(1, 12, 1),
+        'wcp_years' => array_reverse(
+            range(
+                intval(date('Y')) - 100,
+                intval(date('Y')) - 17,
+                1)),
+        'tmpl_path' => $tmpl_path,
+        'txt_wcp_birthdate_invalid' => $translate("Wcp_birthdate_under_18"),
+        'txt_wcp_payolution_terms' => $consent_message,
+        'txt_wcp_payolution_error' => $translate("Wcp_payolution_terms_not_checked")
+    );
+
+    if (!strlen($customer->dGeburtstag) || $customer->dGeburtstag == '00.00.0000') {
+        $smarty_data['wcp_display_birthdate'] = true;
+    }
+
+    try {
+        $birthday = new DateTime($customer->dGeburtstag);
+    } catch (Exception $e) {
+        $smarty_data['wcp_display_birthdate'] = true;
+    }
+
+    $diff = $birthday->diff(new DateTime);
+    $customerAge = $diff->format('%y');
+    if ($customerAge < 18) {
+        $birthdate_data = array(
+            'wcp_display_birthdate' => true,
+            'wcp_selected_day' => $birthday->format("d"),
+            'wcp_selected_month' => $birthday->format("m")
+        );
+        $smarty_data = array_merge($smarty_data, $birthdate_data);
+    }
+
+    $smarty->assign($smarty_data);
+
+
+    pq('head')->append($smarty->fetch($tmpl_path . "payment_scripts.tpl"));
     foreach ($selectors as $payment => $selector) {
         $template_path = $tmpl_path . $payment . ".tpl";
-        if (pq($selector." label")->length && file_exists($template_path)) {
-            pq($selector." label")->append($smarty->fetch($template_path));
+        if (pq($selector . " label")->length && file_exists($template_path)) {
+            $smarty->assign(array(
+                    'method' => $payment,
+                    'wcp_display_payolution_terms' => $get_config('wirecard_checkout_page_' . $payment . '_provider') == 'payolution' && $get_config('wirecard_checkout_page_payolution_terms') == 1
+                )
+            );
+            pq($selector . " label")->append($smarty->fetch($template_path));
         }
     }
 }

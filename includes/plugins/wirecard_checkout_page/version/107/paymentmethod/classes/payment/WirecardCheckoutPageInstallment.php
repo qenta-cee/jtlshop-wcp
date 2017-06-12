@@ -58,22 +58,6 @@ class WirecardCheckoutPageInstallment extends WirecardCheckoutPage
         if ($currency->cISO != 'EUR') {
             return false;
         }
-
-        if (! strlen($customer->dGeburtstag) || $customer->dGeburtstag == '00.00.0000') {
-            return false;
-        }
-
-        try {
-            $birthday = new DateTime($customer->dGeburtstag);
-        } catch (Exception $e) {
-            return false;
-        }
-
-        $diff = $birthday->diff(new DateTime);
-        $customerAge = $diff->format('%y');
-        if ($customerAge < WIRECARD_CHECKOUT_PAGE_INVOICE_INSTALLMENT_MIN_AGE) {
-            return false;
-        }
         return true;
 
     }
