@@ -13,13 +13,25 @@
             <CreateDate>2017-02-28</CreateDate>
             <!--<SQL>install.sql</SQL>-->
         </Version>
-        <Version nr="107">
-            <CreateDate>2017-02-28</CreateDate>
+        <Version nr="108">
+            <CreateDate>2017-06-14</CreateDate>
             <!--<SQL>install.sql</SQL>-->
         </Version>
         <Adminmenu>
             <Settingslink sort="1">
                 <Name>Einstellungen</Name>
+
+                <Setting type="selectbox" initialValue="production" sort="5" conf="Y">
+                    <Name>Konfiguration</Name>
+                    <Description>Zum Testen der Integration eine vordefinierte Konfiguration auswählen. Für Produktivsysteme "Production" auswählen.</Description>
+                    <ValueName>wirecard_checkout_page_configuration</ValueName>
+                    <SelectboxOptions>
+                        <Option value="production" sort="1">Produktion</Option>
+                        <Option value="demo" sort="2">Demo</Option>
+                        <Option value="test" sort="3">Test</Option>
+                        <Option value="test3d" sort="4">Test 3D</Option>
+                    </SelectboxOptions>
+                </Setting>
 
                 <Setting type="text" initialValue="D200001" sort="10" conf="Y">
                     <Name>Customer Id</Name>
@@ -49,7 +61,7 @@
                     <ValueName>wirecard_checkout_page_service_url</ValueName>
                 </Setting>
 
-                <Setting type="text" initialValue="" sort="60" conf="Y">
+                <Setting type="text" initialValue="-1" sort="60" conf="Y">
                     <Name>Max. Versuche</Name>
                     <Description>Anzahl der maximalen Zahlungsversuche</Description>
                     <ValueName>wirecard_checkout_page_max_retries</ValueName>
@@ -85,16 +97,68 @@
                     </SelectboxOptions>
                 </Setting>
 
+                <Setting type="selectbox" initialValue="0" sort="85" conf="Y">
+                    <Name>Warenkorbdaten des Konsumenten mitsenden</Name>
+                    <Description>Weiterleitung des Warenkorbs des Kunden an den Finanzdienstleister.</Description>
+                    <ValueName>wirecard_checkout_page_send_basket</ValueName>
+                    <SelectboxOptions>
+                        <Option value="1" sort="1">On</Option>
+                        <Option value="0" sort="2">Off</Option>
+                    </SelectboxOptions>
+                </Setting>
+
                 <Setting type="text" initialValue="" sort="90" conf="Y">
                     <Name>Text auf der Bezahlseite</Name>
                     <Description>Text, der dem Kunden zu den Bestelldaten angezeigt wird</Description>
                     <ValueName>wirecard_checkout_page_display_text</ValueName>
                 </Setting>
 
+                <Setting type="text" initialValue="Y" sort="99" conf="N">
+                    <Name>Kauf auf Rechnung / Raten Einstellungen</Name>
+                    <Description />
+                    <ValueName>wirecard_checkout_page_installment_title</ValueName>
+                </Setting>
+
+                <Setting type="selectbox" initialValue="wirecard" sort="100" conf="Y">
+                    <Name>Provider für Rechnung</Name>
+                    <ValueName>wirecard_checkout_page_invoice_provider</ValueName>
+                    <SelectboxOptions>
+                        <Option value="wirecard" sort="1">Wirecard</Option>
+                        <Option value="ratepay" sort="2">RatePay</Option>
+                        <Option value="payolution" sort="3">payolution</Option>
+                    </SelectboxOptions>
+                </Setting>
+
+
+                <Setting type="selectbox" initialValue="ratepay" sort="110" conf="Y">
+                    <Name>Provider für Kauf auf Raten</Name>
+                    <ValueName>wirecard_checkout_page_installment_provider</ValueName>
+                    <SelectboxOptions>
+                        <Option value="ratepay" sort="1">RatePay</Option>
+                        <Option value="payolution" sort="2">payolution</Option>
+                    </SelectboxOptions>
+                </Setting>
+
+                <Setting type="selectbox" initialValue="0" sort="120" conf="Y">
+                    <Name>Payolution Nutzungsbedingungen</Name>
+                    <Description>Kunden müssen die Nutzungsbedingungen von payolution während des Bezahlprozesses akzeptieren.</Description>
+                    <ValueName>wirecard_checkout_page_payolution_terms</ValueName>
+                    <SelectboxOptions>
+                        <Option value="0" sort="1">Off</Option>
+                        <Option value="1" sort="2">On</Option>
+                    </SelectboxOptions>
+                </Setting>
+                <Setting type="text" initialValue="" sort="121" conf="Y">
+                    <Name>payolution mID</Name>
+                    <Description>payolution-Händler-ID, Nicht base64 kodiert.</Description>
+                    <ValueName>wirecard_checkout_page_payolution_mid</ValueName>
+                </Setting>
+
 
             </Settingslink>
         </Adminmenu>
         <Hooks>
+            <Hook id="140">140_HOOK_SMARTY_OUTPUTFILTER.php</Hook>
             <Hook id="19">payment_selection.php</Hook>
             <Hook id="144">iframebreakout.php</Hook>
         </Hooks>
@@ -150,6 +214,30 @@
                 </MethodLanguage>
             </Method>
             <Method>
+                <Name>Wirecard Checkout Page Masterpass</Name>
+                <Sort>25</Sort>
+                <SendMail>0</SendMail>
+                <Provider>Wirecard</Provider>
+                <TSCode>OTHER</TSCode>
+                <PreOrder>1</PreOrder>
+                <Soap>0</Soap>
+                <Curl>0</Curl>
+                <Sockets>0</Sockets>
+                <ClassFile>classes/payment/WirecardCheckoutPageMasterpass.php</ClassFile>
+                <ClassName>WirecardCheckoutPageMasterpass</ClassName>
+                <TemplateFile>template/payment.tpl</TemplateFile>
+                <MethodLanguage iso="GER">
+                    <Name>Wirecard Checkout Page Masterpass</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+                <MethodLanguage iso="ENG">
+                    <Name>Wirecard Checkout Page Masterpass</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+            </Method>
+            <Method>
                 <Name>Wirecard Checkout Page Credit Card MoTo</Name>
                 <Sort>30</Sort>
                 <SendMail>0</SendMail>
@@ -163,12 +251,12 @@
                 <ClassName>WirecardCheckoutPageCcardMoto</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Kreditkarte mobile-, tele-order</Name>
+                    <Name>Wirecard Checkout Page Kreditkarte - Post / Telefonbestellung</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Credit Card mobile-, tele-order</Name>
+                    <Name>Wirecard Checkout Page Credit Card - Mail Order / Telephone Order</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
@@ -318,7 +406,31 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page SOFORT Banking (PIN/TAN)</Name>
+                <Name>Wirecard Checkout Page TatraPay</Name>
+                <Sort>95</Sort>
+                <SendMail>0</SendMail>
+                <Provider>Wirecard</Provider>
+                <TSCode>OTHER</TSCode>
+                <PreOrder>1</PreOrder>
+                <Soap>0</Soap>
+                <Curl>0</Curl>
+                <Sockets>0</Sockets>
+                <ClassFile>classes/payment/WirecardCheckoutPageTatrapay.php</ClassFile>
+                <ClassName>WirecardCheckoutPageTatrapay</ClassName>
+                <TemplateFile>template/payment.tpl</TemplateFile>
+                <MethodLanguage iso="GER">
+                    <Name>Wirecard Checkout Page TatraPay</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+                <MethodLanguage iso="ENG">
+                    <Name>Wirecard Checkout Page TatraPay</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+            </Method>
+            <Method>
+                <Name>Wirecard Checkout Page SOFORT Banking</Name>
                 <Sort>100</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -331,36 +443,12 @@
                 <ClassName>WirecardCheckoutPageSofort</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page SOFORT Überweisung (PIN/TAN)</Name>
+                    <Name>Wirecard Checkout Page SOFORT Überweisung</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page SOFORT Banking (PIN/TAN)</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-            </Method>
-            <Method>
-                <Name>Wirecard Checkout Page Skrill Direct</Name>
-                <Sort>110</Sort>
-                <SendMail>0</SendMail>
-                <Provider>Wirecard</Provider>
-                <TSCode>OTHER</TSCode>
-                <PreOrder>1</PreOrder>
-                <Soap>0</Soap>
-                <Curl>0</Curl>
-                <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageSkrillDirect.php</ClassFile>
-                <ClassName>WirecardCheckoutPageSkrillDirect</ClassName>
-                <TemplateFile>template/payment.tpl</TemplateFile>
-                <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Skrill Direct</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-                <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Skrill Direct</Name>
+                    <Name>Wirecard Checkout Page SOFORT Banking</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
@@ -390,31 +478,7 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page mpass</Name>
-                <Sort>130</Sort>
-                <SendMail>0</SendMail>
-                <Provider>Wirecard</Provider>
-                <TSCode>OTHER</TSCode>
-                <PreOrder>1</PreOrder>
-                <Soap>0</Soap>
-                <Curl>0</Curl>
-                <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageMpass.php</ClassFile>
-                <ClassName>WirecardCheckoutPageMpass</ClassName>
-                <TemplateFile>template/payment.tpl</TemplateFile>
-                <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page mpass</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-                <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page mpass</Name>
-                    <ChargeName>10</ChargeName>
-                    <InfoText></InfoText>
-                </MethodLanguage>
-            </Method>
-            <Method>
-                <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
+                <Name>Wirecard Checkout Page Bancontact</Name>
                 <Sort>140</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -427,12 +491,12 @@
                 <ClassName>WirecardCheckoutPageBmc</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
+                    <Name>Wirecard Checkout Page Bancontact</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Bancontact/Mister Cash</Name>
+                    <Name>Wirecard Checkout Page Bancontact</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
@@ -534,8 +598,8 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page InstantBank</Name>
-                <Sort>190</Sort>
+                <Name>Wirecard Checkout Page Trustly</Name>
+                <Sort>185</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
                 <TSCode>OTHER</TSCode>
@@ -543,22 +607,22 @@
                 <Soap>0</Soap>
                 <Curl>0</Curl>
                 <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageInstantBank.php</ClassFile>
-                <ClassName>WirecardCheckoutPageInstantBank</ClassName>
+                <ClassFile>classes/payment/WirecardCheckoutPageTrustly.php</ClassFile>
+                <ClassName>WirecardCheckoutPageTrustly</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page InstantBank</Name>
+                    <Name>Wirecard Checkout Page Trustly</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page InstantBank</Name>
+                    <Name>Wirecard Checkout Page Trustly</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page Mobile Phone Invoicing</Name>
+                <Name>Wirecard Checkout Page Paybox</Name>
                 <Sort>200</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -571,12 +635,12 @@
                 <ClassName>WirecardCheckoutPagePaybox</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Handyabrechnung</Name>
+                    <Name>Wirecard Checkout Page Paybox</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Mobile Phone Invoicing</Name>
+                    <Name>Wirecard Checkout Page Paybox</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
@@ -654,7 +718,7 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page Direct Debit</Name>
+                <Name>Wirecard Checkout Page ePay</Name>
                 <Sort>240</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -663,23 +727,23 @@
                 <Soap>0</Soap>
                 <Curl>0</Curl>
                 <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageElv.php</ClassFile>
-                <ClassName>WirecardCheckoutPageElv</ClassName>
+                <ClassFile>classes/payment/WirecardCheckoutPageEpay.php</ClassFile>
+                <ClassName>WirecardCheckoutPageEpay</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Lastschriftverfahren</Name>
+                    <Name>Wirecard Checkout Page ePay</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Direct Debit</Name>
+                    <Name>Wirecard Checkout Page ePay</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page CLICK2PAY</Name>
-                <Sort>240</Sort>
+                <Name>Wirecard Checkout Page SEPA Direct Debit</Name>
+                <Sort>250</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
                 <TSCode>OTHER</TSCode>
@@ -687,21 +751,20 @@
                 <Soap>0</Soap>
                 <Curl>0</Curl>
                 <Sockets>0</Sockets>
-                <ClassFile>classes/payment/WirecardCheckoutPageClick2pay.php</ClassFile>
-                <ClassName>WirecardCheckoutPageClick2pay</ClassName>
+                <ClassFile>classes/payment/WirecardCheckoutPageSepaDD.php</ClassFile>
+                <ClassName>WirecardCheckoutPageSepaDD</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page CLICK2PAY</Name>
+                    <Name>Wirecard Checkout Page SEPA Direct Debit</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page CLICK2PAY</Name>
+                    <Name>Wirecard Checkout Page SEPA Direct Debit</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
             </Method>
-
         </PaymentMethod>
 
         <Locales>
@@ -731,8 +794,30 @@
                 <VariableLocalized iso="GER">falls nicht, klicken Sie bitte</VariableLocalized>
                 <VariableLocalized iso="ENG">If not, please click</VariableLocalized>
             </Variable>
-
-
+            <Variable>
+                <Name>Wcp_birthdate_under_18</Name>
+                <Description>Displayed when user birthdate is smaller than 18 years</Description>
+                <VariableLocalized iso="GER">Sie müssen mindestens 18 Jahre alt sein, um dieses Zahlungsmittel nutzen zu können.</VariableLocalized>
+                <VariableLocalized iso="ENG">You must be at least 18 years of age to use this payment method.</VariableLocalized>
+            </Variable>
+            <Variable>
+                <Name>Wcp_payolution_terms</Name>
+                <Description>Label for payolution terms checkbox</Description>
+                <VariableLocalized iso="GER">Mit der Übermittlung jener Daten an payolution, die für die Abwicklung von Zahlungen mit Kauf auf Rechnung und die Identitäts- und Bonitätsprüfung erforderlich sind, bin ich einverstanden. Meine _Einwilligung_ kann ich jederzeit mit Wirkung für die Zukunft widerrufen.</VariableLocalized>
+                <VariableLocalized iso="ENG">I agree that the data which are necessary for the liquidation of purchase on account and which are used to complete the identy and credit check are transmitted to payolution. My _consent_ can be revoked at any time with effect for the future.</VariableLocalized>
+            </Variable>
+            <Variable>
+                <Name>Wcp_payolution_terms_not_checked</Name>
+                <Description>Displayed when user didn't select the payolution terms</Description>
+                <VariableLocalized iso="GER">Bitte akzeptieren Sie die payolution Konditionen.</VariableLocalized>
+                <VariableLocalized iso="ENG">Please accept the payolution terms.</VariableLocalized>
+            </Variable>
+            <Variable>
+                <Name>Wcp_eps_ideal_bank_institution</Name>
+                <Description>Label for eps and ideal bank list dropdown</Description>
+                <VariableLocalized iso="GER">Finanzinstitut</VariableLocalized>
+                <VariableLocalized iso="ENG">Financial institution</VariableLocalized>
+            </Variable>
         </Locales>
     </Install>
 </jtlshop3plugin>
