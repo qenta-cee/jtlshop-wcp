@@ -132,7 +132,7 @@ class WirecardCheckoutPage extends PaymentMethod
                 unset($_SESSION['financialInstitution']);
             }
 
-            if( $this->paymenttype == WirecardCEE_QMore_PaymentType::MASTERPASS )
+            if( $this->paymenttype == WirecardCEE_QPay_PaymentType::MASTERPASS )
                 $client->setShippingProfile('NO_SHIPPING');
 
             if ($this->getConfig('send_basket')

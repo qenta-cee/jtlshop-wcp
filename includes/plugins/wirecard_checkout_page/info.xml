@@ -622,7 +622,7 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page Mobile Phone Invoicing</Name>
+                <Name>Wirecard Checkout Page Paybox</Name>
                 <Sort>200</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -635,12 +635,12 @@
                 <ClassName>WirecardCheckoutPagePaybox</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page Handyabrechnung</Name>
+                    <Name>Wirecard Checkout Page Paybox</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page Mobile Phone Invoicing</Name>
+                    <Name>Wirecard Checkout Page Paybox</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
