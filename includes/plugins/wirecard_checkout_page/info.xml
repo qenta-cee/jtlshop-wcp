@@ -214,7 +214,7 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page MasterPass</Name>
+                <Name>Wirecard Checkout Page Masterpass</Name>
                 <Sort>20</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -227,12 +227,12 @@
                 <ClassName>WirecardCheckoutPageMasterpass</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page MasterPass</Name>
+                    <Name>Wirecard Checkout Page Masterpass</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page MasterPass</Name>
+                    <Name>Wirecard Checkout Page Masterpass</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
