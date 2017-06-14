@@ -92,8 +92,8 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
         'txt_wcp_payolution_terms' => $consent_message,
         'txt_wcp_payolution_error' => $translate("Wcp_payolution_terms_not_checked"),
         'txt_wcp_eps_ideal_bank_institution' => $translate('Wcp_eps_ideal_bank_institution'),
-        'wcp_eps_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QMore_PaymentType::EPS),
-        'wcp_ideal_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QMore_PaymentType::IDL)
+        'wcp_eps_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::EPS),
+        'wcp_ideal_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::IDL)
     );
 
     if (!strlen($customer->dGeburtstag) || $customer->dGeburtstag == '00.00.0000') {
