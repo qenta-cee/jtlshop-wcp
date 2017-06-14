@@ -215,7 +215,7 @@
             </Method>
             <Method>
                 <Name>Wirecard Checkout Page Masterpass</Name>
-                <Sort>20</Sort>
+                <Sort>25</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
                 <TSCode>OTHER</TSCode>
@@ -406,7 +406,31 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page SOFORT Banking (PIN/TAN)</Name>
+                <Name>Wirecard Checkout Page TatraPay</Name>
+                <Sort>95</Sort>
+                <SendMail>0</SendMail>
+                <Provider>Wirecard</Provider>
+                <TSCode>OTHER</TSCode>
+                <PreOrder>1</PreOrder>
+                <Soap>0</Soap>
+                <Curl>0</Curl>
+                <Sockets>0</Sockets>
+                <ClassFile>classes/payment/WirecardCheckoutPageTatrapay.php</ClassFile>
+                <ClassName>WirecardCheckoutPageTatrapay</ClassName>
+                <TemplateFile>template/payment.tpl</TemplateFile>
+                <MethodLanguage iso="GER">
+                    <Name>Wirecard Checkout Page TatraPay</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+                <MethodLanguage iso="ENG">
+                    <Name>Wirecard Checkout Page TatraPay</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+            </Method>
+            <Method>
+                <Name>Wirecard Checkout Page SOFORT Banking</Name>
                 <Sort>100</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -419,12 +443,12 @@
                 <ClassName>WirecardCheckoutPageSofort</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page SOFORT Überweisung (PIN/TAN)</Name>
+                    <Name>Wirecard Checkout Page SOFORT Überweisung</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page SOFORT Banking (PIN/TAN)</Name>
+                    <Name>Wirecard Checkout Page SOFORT Banking</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
@@ -574,6 +598,30 @@
                 </MethodLanguage>
             </Method>
             <Method>
+                <Name>Wirecard Checkout Page Trustly</Name>
+                <Sort>185</Sort>
+                <SendMail>0</SendMail>
+                <Provider>Wirecard</Provider>
+                <TSCode>OTHER</TSCode>
+                <PreOrder>0</PreOrder>
+                <Soap>0</Soap>
+                <Curl>0</Curl>
+                <Sockets>0</Sockets>
+                <ClassFile>classes/payment/WirecardCheckoutPageTrustly.php</ClassFile>
+                <ClassName>WirecardCheckoutPageTrustly</ClassName>
+                <TemplateFile>template/payment.tpl</TemplateFile>
+                <MethodLanguage iso="GER">
+                    <Name>Wirecard Checkout Page Trustly</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+                <MethodLanguage iso="ENG">
+                    <Name>Wirecard Checkout Page Trustly</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+            </Method>
+            <Method>
                 <Name>Wirecard Checkout Page Mobile Phone Invoicing</Name>
                 <Sort>200</Sort>
                 <SendMail>0</SendMail>
@@ -665,6 +713,54 @@
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
                     <Name>Wirecard Checkout Page PayPal</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+            </Method>
+            <Method>
+                <Name>Wirecard Checkout Page ePay</Name>
+                <Sort>240</Sort>
+                <SendMail>0</SendMail>
+                <Provider>Wirecard</Provider>
+                <TSCode>OTHER</TSCode>
+                <PreOrder>1</PreOrder>
+                <Soap>0</Soap>
+                <Curl>0</Curl>
+                <Sockets>0</Sockets>
+                <ClassFile>classes/payment/WirecardCheckoutPageEpay.php</ClassFile>
+                <ClassName>WirecardCheckoutPageEpay</ClassName>
+                <TemplateFile>template/payment.tpl</TemplateFile>
+                <MethodLanguage iso="GER">
+                    <Name>Wirecard Checkout Page ePay</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+                <MethodLanguage iso="ENG">
+                    <Name>Wirecard Checkout Page ePay</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+            </Method>
+            <Method>
+                <Name>Wirecard Checkout Page SEPA Direct Debit</Name>
+                <Sort>250</Sort>
+                <SendMail>0</SendMail>
+                <Provider>Wirecard</Provider>
+                <TSCode>OTHER</TSCode>
+                <PreOrder>1</PreOrder>
+                <Soap>0</Soap>
+                <Curl>0</Curl>
+                <Sockets>0</Sockets>
+                <ClassFile>classes/payment/WirecardCheckoutPageSepaDD.php</ClassFile>
+                <ClassName>WirecardCheckoutPageSepaDD</ClassName>
+                <TemplateFile>template/payment.tpl</TemplateFile>
+                <MethodLanguage iso="GER">
+                    <Name>Wirecard Checkout Page SEPA Direct Debit</Name>
+                    <ChargeName>10</ChargeName>
+                    <InfoText></InfoText>
+                </MethodLanguage>
+                <MethodLanguage iso="ENG">
+                    <Name>Wirecard Checkout Page SEPA Direct Debit</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
