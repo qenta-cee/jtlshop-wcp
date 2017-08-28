@@ -127,6 +127,11 @@ class WirecardCheckoutPage extends PaymentMethod
                 ->createConsumerMerchantCrmId($_SESSION['Kunde']->cMail)
                 ->setWindowName(WIRECARD_CHECKOUT_PAGE_WINDOWNAME);
 
+            if (isset($_SESSION['wcp_consumerDeviceId'])) {
+                $client->consumerDeviceId = $_SESSION['wcp_consumerDeviceId'];
+                unset($_SESSION['wcp_consumerDeviceId']);
+            }
+
             if( isset($_SESSION['financialInstitution'])){
                 $client->setFinancialInstitution($_SESSION['financialInstitution']);
                 unset($_SESSION['financialInstitution']);

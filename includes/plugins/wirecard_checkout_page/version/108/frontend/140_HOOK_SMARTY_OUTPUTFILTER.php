@@ -35,8 +35,8 @@
  */
 global $smarty, $customer;
 
-ini_set("display_errors", "on");
-error_reporting(E_ALL);
+ini_set('include_path', dirname(__FILE__) . '/../paymentmethod/classes/lib/' . PATH_SEPARATOR .ini_get('include_path'));
+require_once "autoload.php";
 
 $step = Shop::Smarty()->getTemplateVars('step');
 if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
@@ -78,6 +78,10 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
         },
         $translate("Wcp_payolution_terms"));
 
+    if (!isset($_SESSION['wcp_consumerDeviceId'])) {
+        $_SESSION['wcp_consumerDeviceId'] = md5($get_config('wirecard_checkout_page_customer_id') . "_" . microtime());
+    }
+
     $smarty_data = array(
         'plugin_id' => $kPlugin,
         'wcp_days' => range(1, 31, 1),
@@ -93,7 +97,8 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
         'txt_wcp_payolution_error' => $translate("Wcp_payolution_terms_not_checked"),
         'txt_wcp_eps_ideal_bank_institution' => $translate('Wcp_eps_ideal_bank_institution'),
         'wcp_eps_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::EPS),
-        'wcp_ideal_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::IDL)
+        'wcp_ideal_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::IDL),
+        'consumerDeviceId' => $_SESSION['wcp_consumerDeviceId']
     );
 
     if (!strlen($customer->dGeburtstag) || $customer->dGeburtstag == '00.00.0000') {
