@@ -43,6 +43,10 @@ $tmpl_path = dirname(__FILE__) . '/../paymentmethod/template/';
 $step = Shop::Smarty()->getTemplateVars('step');
 
 if (Shop::getPageType() == PAGE_BESTELLVORGANG && $step == 'Bestaetigung') {
+    if (!isset($_SESSION['wcp_consumerDeviceId'])) {
+        $_SESSION['wcp_consumerDeviceId'] = md5($oPlugin->oPluginEinstellungAssoc_arr['wirecard_checkout_page_customer_id'] . "_" . microtime());
+    }
+
     $smarty->assign(array('consumerDeviceId' => $_SESSION['wcp_consumerDeviceId']));
     pq('footer')->append($smarty->fetch($tmpl_path . "wcp_consumerdeviceid.tpl"));
 }
@@ -83,10 +87,6 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
             return $match;
         },
         $translate("Wcp_payolution_terms"));
-
-    if (!isset($_SESSION['wcp_consumerDeviceId'])) {
-        $_SESSION['wcp_consumerDeviceId'] = md5($get_config('wirecard_checkout_page_customer_id') . "_" . microtime());
-    }
 
     $smarty_data = array(
         'plugin_id' => $kPlugin,
