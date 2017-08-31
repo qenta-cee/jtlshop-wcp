@@ -35,13 +35,23 @@
  */
 global $smarty, $customer;
 
-ini_set("display_errors", "on");
-error_reporting(E_ALL);
+ini_set('include_path', dirname(__FILE__) . '/../paymentmethod/classes/lib/' . PATH_SEPARATOR .ini_get('include_path'));
+require_once "autoload.php";
+
+$tmpl_path = dirname(__FILE__) . '/../paymentmethod/template/';
 
 $step = Shop::Smarty()->getTemplateVars('step');
-if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
-    $tmpl_path = dirname(__FILE__) . '/../paymentmethod/template/';
 
+if (Shop::getPageType() == PAGE_BESTELLVORGANG && $step == 'Bestaetigung') {
+    if (!isset($_SESSION['wcp_consumerDeviceId'])) {
+        $_SESSION['wcp_consumerDeviceId'] = md5($oPlugin->oPluginEinstellungAssoc_arr['wirecard_checkout_page_customer_id'] . "_" . microtime());
+    }
+
+    $smarty->assign(array('consumerDeviceId' => $_SESSION['wcp_consumerDeviceId']));
+    pq('footer')->append($smarty->fetch($tmpl_path . "wcp_consumerdeviceid.tpl"));
+}
+
+if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
     $translate = function ($key) use ($oPlugin) {
         return !array_key_exists($key,
             $oPlugin->oPluginSprachvariableAssoc_arr) ? $key : $oPlugin->oPluginSprachvariableAssoc_arr[$key];
@@ -118,7 +128,6 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
     }
 
     $smarty->assign($smarty_data);
-
 
     pq('head')->append($smarty->fetch($tmpl_path . "payment_scripts.tpl"));
     foreach ($selectors as $payment => $selector) {
