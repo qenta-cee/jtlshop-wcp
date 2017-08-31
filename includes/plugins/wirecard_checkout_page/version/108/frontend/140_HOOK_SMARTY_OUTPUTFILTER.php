@@ -38,10 +38,16 @@ global $smarty, $customer;
 ini_set('include_path', dirname(__FILE__) . '/../paymentmethod/classes/lib/' . PATH_SEPARATOR .ini_get('include_path'));
 require_once "autoload.php";
 
-$step = Shop::Smarty()->getTemplateVars('step');
-if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
-    $tmpl_path = dirname(__FILE__) . '/../paymentmethod/template/';
+$tmpl_path = dirname(__FILE__) . '/../paymentmethod/template/';
 
+$step = Shop::Smarty()->getTemplateVars('step');
+
+if (Shop::getPageType() == PAGE_BESTELLVORGANG && $step == 'Bestaetigung') {
+    $smarty->assign(array('consumerDeviceId' => $_SESSION['wcp_consumerDeviceId']));
+    pq('footer')->append($smarty->fetch($tmpl_path . "wcp_consumerdeviceid.tpl"));
+}
+
+if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
     $translate = function ($key) use ($oPlugin) {
         return !array_key_exists($key,
             $oPlugin->oPluginSprachvariableAssoc_arr) ? $key : $oPlugin->oPluginSprachvariableAssoc_arr[$key];
@@ -97,8 +103,7 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
         'txt_wcp_payolution_error' => $translate("Wcp_payolution_terms_not_checked"),
         'txt_wcp_eps_ideal_bank_institution' => $translate('Wcp_eps_ideal_bank_institution'),
         'wcp_eps_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::EPS),
-        'wcp_ideal_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::IDL),
-        'consumerDeviceId' => $_SESSION['wcp_consumerDeviceId']
+        'wcp_ideal_institutions' => WirecardCEE_Stdlib_PaymentTypeAbstract::getFinancialInstitutions(WirecardCEE_QPay_PaymentType::IDL)
     );
 
     if (!strlen($customer->dGeburtstag) || $customer->dGeburtstag == '00.00.0000') {
@@ -123,7 +128,6 @@ if (Shop::getPageType() === PAGE_BESTELLVORGANG && $step == 'Zahlung') {
     }
 
     $smarty->assign($smarty_data);
-
 
     pq('head')->append($smarty->fetch($tmpl_path . "payment_scripts.tpl"));
     foreach ($selectors as $payment => $selector) {
