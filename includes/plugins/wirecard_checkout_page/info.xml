@@ -13,11 +13,7 @@
             <CreateDate>2017-02-28</CreateDate>
             <!--<SQL>install.sql</SQL>-->
         </Version>
-        <Version nr="108">
-            <CreateDate>2017-06-14</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
-        </Version>
-        <Version nr="109">
+        <Version nr="110">
             <CreateDate>2017-08-31</CreateDate>
             <!--<SQL>install.sql</SQL>-->
         </Version>
