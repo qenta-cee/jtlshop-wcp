@@ -430,7 +430,7 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page SOFORT Banking</Name>
+                <Name>Wirecard Checkout Page Online bank transfer.</Name>
                 <Sort>100</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -443,12 +443,12 @@
                 <ClassName>WirecardCheckoutPageSofort</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page SOFORT Überweisung</Name>
+                    <Name>Wirecard Checkout Page Sofort.</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page SOFORT Banking</Name>
+                    <Name>Wirecard Checkout Page Online bank transfer.</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
