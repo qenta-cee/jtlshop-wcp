@@ -1,1 +1,2 @@
 UPDATE tzahlungsart u INNER JOIN ( SELECT cName, MAX(kZahlungsart) AS max_Id FROM tzahlungsart GROUP BY cName ) t ON u.cName = t.cName SET u.nActive = '0' WHERE u.kZahlungsart <> t.max_Id;
+UPDATE tzahlungsart SET nActive = '0' WHERE cName = 'Wirecard Checkout Page SOFORT Banking';
