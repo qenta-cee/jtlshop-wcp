@@ -11,15 +11,16 @@
     <Install>
         <Version nr="100">
             <CreateDate>2017-02-28</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
         </Version>
         <Version nr="108">
             <CreateDate>2017-06-14</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
         </Version>
         <Version nr="109">
             <CreateDate>2017-08-31</CreateDate>
-            <!--<SQL>install.sql</SQL>-->
+        </Version>
+        <Version nr="110">
+            <SQL>install.sql</SQL>
+            <CreateDate>2017-10-03</CreateDate>
         </Version>
         <Adminmenu>
             <Settingslink sort="1">
@@ -434,7 +435,7 @@
                 </MethodLanguage>
             </Method>
             <Method>
-                <Name>Wirecard Checkout Page SOFORT Banking</Name>
+                <Name>Wirecard Checkout Page Online bank transfer.</Name>
                 <Sort>100</Sort>
                 <SendMail>0</SendMail>
                 <Provider>Wirecard</Provider>
@@ -447,12 +448,12 @@
                 <ClassName>WirecardCheckoutPageSofort</ClassName>
                 <TemplateFile>template/payment.tpl</TemplateFile>
                 <MethodLanguage iso="GER">
-                    <Name>Wirecard Checkout Page SOFORT Überweisung</Name>
+                    <Name>Wirecard Checkout Page Sofort.</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
                 <MethodLanguage iso="ENG">
-                    <Name>Wirecard Checkout Page SOFORT Banking</Name>
+                    <Name>Wirecard Checkout Page Online bank transfer.</Name>
                     <ChargeName>10</ChargeName>
                     <InfoText></InfoText>
                 </MethodLanguage>
