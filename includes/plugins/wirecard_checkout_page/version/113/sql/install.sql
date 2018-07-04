@@ -1,0 +1,1 @@
+UPDATE tzahlungsart SET nActive = '0' WHERE cName = 'Wirecard Checkout Page SOFORT Banking';
